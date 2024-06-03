@@ -1,5 +1,5 @@
-./data_log
-./Intp_log
+./data_log/*.csv
+./Intp_log/*.txt
 
 # Prerequisites
 *.d
