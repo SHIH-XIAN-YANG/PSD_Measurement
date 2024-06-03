@@ -1,5 +1,7 @@
 data_log/
+*.csv
 Intp_log/
+*.txt
 
 # Prerequisites
 *.d
@@ -33,3 +35,4 @@ Intp_log/
 *.exe
 *.out
 *.app
+

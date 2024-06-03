@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rt_psd", "rt_psd\rt_psd.vcxproj", "{E0B19889-11F2-4020-9BD2-334CD98E7810}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "psd", "psd\psd.vcxproj", "{D5F653BB-DBA3-43F4-856A-26C5D07CD803}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gui_psd", "gui_psd\gui_psd.vcxproj", "{9D1D1F10-9680-4345-8089-399CE06DCD96}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		RtssDebug|x64 = RtssDebug|x64
+		RtssDebug|x86 = RtssDebug|x86
+		RtssRelease|x64 = RtssRelease|x64
+		RtssRelease|x86 = RtssRelease|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.Debug|x64.ActiveCfg = Debug|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.Debug|x64.Build.0 = Debug|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.Debug|x86.ActiveCfg = Debug|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.Release|x64.ActiveCfg = Release|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.Release|x64.Build.0 = Release|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.Release|x86.ActiveCfg = Release|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.RtssDebug|x64.ActiveCfg = RtssDebug|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.RtssDebug|x64.Build.0 = RtssDebug|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.RtssDebug|x86.ActiveCfg = RtssDebug|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.RtssRelease|x64.ActiveCfg = RtssRelease|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.RtssRelease|x64.Build.0 = RtssRelease|x64
+		{E0B19889-11F2-4020-9BD2-334CD98E7810}.RtssRelease|x86.ActiveCfg = RtssRelease|x64
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.Debug|x64.ActiveCfg = Debug|x64
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.Debug|x64.Build.0 = Debug|x64
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.Debug|x86.ActiveCfg = Debug|Win32
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.Debug|x86.Build.0 = Debug|Win32
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.Release|x64.ActiveCfg = Release|x64
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.Release|x64.Build.0 = Release|x64
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.Release|x86.ActiveCfg = Release|Win32
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.Release|x86.Build.0 = Release|Win32
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssDebug|x64.ActiveCfg = Debug|x64
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssDebug|x64.Build.0 = Debug|x64
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssDebug|x86.ActiveCfg = Debug|Win32
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssDebug|x86.Build.0 = Debug|Win32
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssRelease|x64.ActiveCfg = Release|x64
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssRelease|x64.Build.0 = Release|x64
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssRelease|x86.ActiveCfg = Release|Win32
+		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssRelease|x86.Build.0 = Release|Win32
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Debug|x64.ActiveCfg = Debug|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Debug|x64.Build.0 = Debug|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Debug|x86.ActiveCfg = Debug|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Release|x64.ActiveCfg = Release|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Release|x64.Build.0 = Release|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Release|x86.ActiveCfg = Release|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssDebug|x64.ActiveCfg = Debug|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssDebug|x64.Build.0 = Debug|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssDebug|x86.ActiveCfg = Debug|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssDebug|x86.Build.0 = Debug|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssRelease|x64.ActiveCfg = Release|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssRelease|x64.Build.0 = Release|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssRelease|x86.ActiveCfg = Debug|x64
+		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssRelease|x86.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0A6D427-BCD0-4F57-96D5-4993BBDE8B95}
+	EndGlobalSection
+EndGlobal
