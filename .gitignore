@@ -36,3 +36,5 @@ Intp_log/
 *.out
 *.app
 
+*.vs
+
