@@ -1,11 +1,2 @@
-﻿  Reading Qt configuration (C:/Qt/6.5.2/msvc2019_64/bin/qmake)
-  uic gui_psd.ui
-  rcc gui_psd.qrc
-  moc gui_psd.h
-   RCC: Warning: No resources in 'G:\PSD_Measurement\gui_psd\gui_psd.qrc'.
-  qcustomplot.cpp
-  gui_psd.cpp
-  main.cpp
-  qrc_gui_psd.cpp
-  moc_gui_psd.cpp
-LINK : fatal error LNK1104: cannot open file 'Qt6PrintSupportd.lib'
+﻿  gui_psd.cpp
+  gui_psd.vcxproj -> E:\samuel\PSD_Measurement\x64\GUIDebug\gui_psd.exe

@@ -1,0 +1,13 @@
+﻿  Reading Qt configuration (C:/Qt/6.5.2/msvc2019_64/bin/qmake)
+  uic test.ui
+  rcc test.qrc
+  moc test.h
+  moc qcustomplot.h
+   RCC: Warning: No resources in 'E:\samuel\PSD_Measurement\test\test.qrc'.
+  qcustomplot.cpp
+  test.cpp
+  main.cpp
+  qrc_test.cpp
+  moc_test.cpp
+  moc_qcustomplot.cpp
+  test.vcxproj -> E:\samuel\PSD_Measurement\x64\Debug\test.exe
