@@ -42,6 +42,7 @@ public slots:
     void update_sigmaPlot(void);
     void update_sigmaProgressBar(void);
     void record_button_clicked(void);
+    void runHRSS_button_clicked(void);
 
 private:
     Ui::gui_psdClass ui;

@@ -27,8 +27,6 @@ struct PsdData psd_data;
 
 int _tmain(int argc, _TCHAR * argv[])
 { 
-	
-	
 	// shared memory:
 	struct Shm_UI* ui;
 	HANDLE ui_handler = RtCreateSharedMemory(0, 0, sizeof(Shm_UI), L"SHM_UI", (void**)&(psd_data.ui));

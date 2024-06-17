@@ -14,17 +14,19 @@ gui_psd::gui_psd(QWidget *parent)
     if (ui_handler == NULL || shm_ui == nullptr) {
         ui.log_textBrowser->append("Failed to create or access shared memory");
     }
-    //rt605 = HRSS();
-    //rt605.connectHRSS(HRSS_IP);
-    //std::thread open_rtss(&gui_psd::RunICRC_RTSS, this);
-    //open_rtss.detach();
+    rt605 = HRSS();
+    rt605.connectHRSS(HRSS_IP);
+    std::thread open_rtss(&gui_psd::RunICRC_RTSS, this);
+    open_rtss.detach();
 
     QObject::connect(&timer_scope, &QTimer::timeout, this, &gui_psd::updatedataTable);
     QObject::connect(&timer_scope, &QTimer::timeout, this, &gui_psd::update_sigmaPlot);
     QObject::connect(&timer_scope, &QTimer::timeout, this, &gui_psd::update_scope);
     QObject::connect(&timer_scope, &QTimer::timeout, this, &gui_psd::update_sigmaProgressBar);
+    
 
     QObject::connect(ui.record_pushButton, &QPushButton::clicked, this, &gui_psd::record_button_clicked);
+    QObject::connect(ui.runHRSS_pushButton, &QPushButton::clicked, this, &gui_psd::runHRSS_button_clicked);
     current_time = 0.0;
     timer_scope.start(1);
     ui.log_textBrowser->append("RTX STARTING");
@@ -129,7 +131,7 @@ void gui_psd::record_button_clicked(void) {
     if (shm_ui) {
         if (!record_state) {
             shm_ui->file_create = true;
-
+            ui.record_pushButton->setEnabled(false);
             while (shm_ui->record_filename[0] == 0) {
                 Sleep(10);
             }
@@ -138,6 +140,7 @@ void gui_psd::record_button_clicked(void) {
             ui.log_textBrowser->append(buf);
             ui.record_pushButton->setText("Recording");
             record_state = true;
+            ui.record_pushButton->setEnabled(true);
         }
         else {
             shm_ui->file_close = true;
@@ -148,6 +151,201 @@ void gui_psd::record_button_clicked(void) {
         }
     }
     
+}
+
+void gui_psd::runHRSS_button_clicked(void) {
+    ui.runHRSS_pushButton->setEnabled(false);
+    switch (ui.HRSS_task_comboBox.currentIndex())
+    {
+    case 0:
+        // Calibration - Black PSD
+        double current_pos[6] = { 0 };
+        
+        rt605.return_home();
+        rt605.set_base(10);
+        rt605.set_tool(2);
+        rt605.print_current_pos();
+        rt605.set_speed(500); // 500mm/s
+
+        // start points trajectory
+        double x_inc[6] = { 10,0,0,0,0,0 };
+        double x_dec[6] = { -10,0,0,0,0,0 };
+        double z_dec[6] = { 0,0,-10,0,0,0 };
+        ui.log_textBrowser.append("Calibration - Black PSD - Trajectory using HRSDK RUNNING");
+        // std::cout << "Points Trajectory using HRSDK RUNNING" << std::endl;
+        rt605.GetRobotPosition(ui->robot_pos);
+        ui->log = true;
+        Sleep(100);
+        ui->log = false;
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
+                if (i % 2 == 0) {
+                    rt605.lin_rel(x_inc);
+                }
+                else {
+                    rt605.lin_rel(x_dec);
+                }
+                while (rt605.get_robot_state() != 1) {
+                    Sleep(10);
+                }
+
+                rt605.GetRobotPosition(ui->robot_pos);
+                rt605.print_current_pos();
+                ui->log = true;
+                Sleep(100);
+                ui->log = false;
+
+            }
+            rt605.lin_rel(z_dec);
+            while (rt605.get_robot_state() != 1) {
+                Sleep(10);
+            }
+
+            rt605.GetRobotPosition(ui->robot_pos);
+            rt605.print_current_pos();
+            ui->log = true;
+            Sleep(100);
+            ui->log = false;
+        }
+
+        rt605.return_home();
+        ui.log_textBrowser.append("HRSS Task Finished");
+        break;
+    case 1:
+        // Calibration - White PSD
+        rt605.return_home();
+        rt605.set_base(10);
+        rt605.set_tool(2);
+        rt605.print_current_pos();
+        rt605.set_speed(500); // 500mm/s
+
+        // PSD 1 moving range from p1 to p2
+        double p1[6] = { 84.169, 316.065, 273.597, 0, 0, 0 };
+        double p2[6] = { 304.169, 316.065, 93.597, 0, 0, 0 };
+
+        double p3[6] = { 144.118, 316.065, 275.939, 0, 0, 0 };
+        double p4[6] = { 324.118, 316.065, 55.939, 0, 0, 0 };
+
+        // start points trajectory
+        double x_inc[6] = { 10,0,0,0,0,0 };
+        double x_dec[6] = { -10,0,0,0,0,0 };
+        double z_dec[6] = { 0,0,-10,0,0,0 };
+
+        rt605.p2p(p1);
+        ui.log_textBrowser.append("Points Trajectory using HRSDK RUNNING");
+        //std::cout << "Points Trajectory using HRSDK RUNNING" << std::endl;
+        rt605.GetRobotPosition(ui->robot_pos);
+        ui->log = true;
+        Sleep(100);
+        ui->log = false;
+        for (int i = 0; i < 18; i++) {
+            for (int j = 0; j < 22; j++) {
+                if (i % 2 == 0) {
+                    rt605.lin_rel(x_inc);
+                }
+                else {
+                    rt605.lin_rel(x_dec);
+                }
+                while (rt605.get_robot_state() != 1) {
+                    Sleep(10);
+                }
+
+                rt605.GetRobotPosition(ui->robot_pos);
+                rt605.print_current_pos();
+                ui->log = true;
+                Sleep(100);
+                ui->log = false;
+
+            }
+            rt605.lin_rel(z_dec);
+            while (rt605.get_robot_state() != 1) {
+                Sleep(10);
+            }
+
+            rt605.GetRobotPosition(ui->robot_pos);
+            rt605.print_current_pos();
+            ui->log = true;
+            Sleep(100);
+            ui->log = false;
+        }
+
+        rt605.return_home();
+        ui.log_textBrowser.append("HRSS Task Finished");
+        //std::cout << "Finished" << std::endl;
+        break;
+    case 2:
+        // Distortion calibration - Black PSD
+        rt605.return_home();
+        rt605.set_base(10);
+        rt605.set_tool(2);
+        rt605.print_current_pos();
+        rt605.set_speed(500); // 500mm/s
+
+        double p1[6] = { 144.118, 316.065, 275.939, 0, 0, 0 };
+        double p2[6] = { 324.118, 316.065, 55.939, 0, 0, 0 };
+
+        // start points trajectory
+        double x_inc[6] = { 10,0,0,0,0,0 };
+        double x_dec[6] = { -10,0,0,0,0,0 };
+        double z_dec[6] = { 0,0,-10,0,0,0 };
+
+        rt605.p2p(p1);
+        ui.log_textBrowser.append("Distortion calibration - Black PSD HRSS Task Start");
+        //std::cout << "Points Trajectory using HRSDK RUNNING" << std::endl;
+        rt605.GetRobotPosition(ui->robot_pos);
+        ui->log = true;
+        Sleep(100);
+        ui->log = false;
+        for (int i = 0; i < 22; i++) {
+            for (int j = 0; j < 18; j++) {
+                if (i % 2 == 0) {
+                    rt605.lin_rel(x_inc);
+                }
+                else {
+                    rt605.lin_rel(x_dec);
+                }
+                while (rt605.get_robot_state() != 1) {
+                    Sleep(10);
+                }
+
+                rt605.GetRobotPosition(ui->robot_pos);
+                rt605.print_current_pos();
+                ui->log = true;
+                Sleep(100);
+                ui->log = false;
+
+            }
+            rt605.lin_rel(z_dec);
+            while (rt605.get_robot_state() != 1) {
+                Sleep(10);
+            }
+
+            rt605.GetRobotPosition(ui->robot_pos);
+            rt605.print_current_pos();
+            ui->log = true;
+            Sleep(100);
+            ui->log = false;
+        }
+
+        rt605.return_home();
+        ui.log_textBrowser.append("HRSS Task Finished");
+        break;
+    case 3:
+        // Distortion calibration - Black PSD
+        ui.log_textBrowser.append("Not Yet Implemented");
+        break;
+    case 4:
+        // TEST2006.hrb
+        rt605.StartProgram("TEST1006.hrb");
+        while (rt605.get_robot_state() != 1) {
+            Sleep(10);
+        }
+        
+        break;
+    default:
+        break;
+    }
+    ui.runHRSS_pushButton->setEnabled(true);
 }
 
 void gui_psd::update_sigmaPlot(void){
