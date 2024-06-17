@@ -160,7 +160,7 @@ void gui_psd::runHRSS_button_clicked(void) {
     case 0:
         // Calibration - Black PSD
         double current_pos[6] = { 0 };
-        
+        record_button_clicked();
         rt605.return_home();
         rt605.set_base(10);
         rt605.set_tool(2);
@@ -210,14 +210,17 @@ void gui_psd::runHRSS_button_clicked(void) {
 
         rt605.return_home();
         ui.log_textBrowser.append("HRSS Task Finished");
+        record_button_clicked();
         break;
     case 1:
         // Calibration - White PSD
+        record_button_clicked();
         rt605.return_home();
         rt605.set_base(10);
         rt605.set_tool(2);
         rt605.print_current_pos();
         rt605.set_speed(500); // 500mm/s
+
 
         // PSD 1 moving range from p1 to p2
         double p1[6] = { 84.169, 316.065, 273.597, 0, 0, 0 };
@@ -272,9 +275,11 @@ void gui_psd::runHRSS_button_clicked(void) {
         rt605.return_home();
         ui.log_textBrowser.append("HRSS Task Finished");
         //std::cout << "Finished" << std::endl;
+        record_button_clicked();
         break;
     case 2:
         // Distortion calibration - Black PSD
+        record_button_clicked();
         rt605.return_home();
         rt605.set_base(10);
         rt605.set_tool(2);
@@ -329,6 +334,7 @@ void gui_psd::runHRSS_button_clicked(void) {
 
         rt605.return_home();
         ui.log_textBrowser.append("HRSS Task Finished");
+        record_button_clicked();
         break;
     case 3:
         // Distortion calibration - Black PSD
