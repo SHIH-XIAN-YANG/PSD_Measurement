@@ -7,7 +7,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rt_psd", "rt_psd\rt_psd.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "psd", "psd\psd.vcxproj", "{D5F653BB-DBA3-43F4-856A-26C5D07CD803}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gui_psd", "gui_psd\gui_psd.vcxproj", "{9D1D1F10-9680-4345-8089-399CE06DCD96}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{9BD39683-D873-471F-840A-4EC8193C9DB5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gui_psd", "gui_psd\gui_psd.vcxproj", "{9490E1C3-410C-4976-8956-21085683C5AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,20 +51,34 @@ Global
 		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssRelease|x64.Build.0 = Release|x64
 		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssRelease|x86.ActiveCfg = Release|Win32
 		{D5F653BB-DBA3-43F4-856A-26C5D07CD803}.RtssRelease|x86.Build.0 = Release|Win32
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Debug|x64.ActiveCfg = Debug|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Debug|x64.Build.0 = Debug|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Debug|x86.ActiveCfg = Debug|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Release|x64.ActiveCfg = Release|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Release|x64.Build.0 = Release|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.Release|x86.ActiveCfg = Release|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssDebug|x64.ActiveCfg = Debug|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssDebug|x64.Build.0 = Debug|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssDebug|x86.ActiveCfg = Debug|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssDebug|x86.Build.0 = Debug|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssRelease|x64.ActiveCfg = Release|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssRelease|x64.Build.0 = Release|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssRelease|x86.ActiveCfg = Debug|x64
-		{9D1D1F10-9680-4345-8089-399CE06DCD96}.RtssRelease|x86.Build.0 = Debug|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.Debug|x64.ActiveCfg = Debug|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.Debug|x64.Build.0 = Debug|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.Debug|x86.ActiveCfg = Debug|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.Release|x64.ActiveCfg = Release|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.Release|x64.Build.0 = Release|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.Release|x86.ActiveCfg = Release|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.RtssDebug|x64.ActiveCfg = Debug|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.RtssDebug|x64.Build.0 = Debug|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.RtssDebug|x86.ActiveCfg = Debug|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.RtssDebug|x86.Build.0 = Debug|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.RtssRelease|x64.ActiveCfg = Release|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.RtssRelease|x64.Build.0 = Release|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.RtssRelease|x86.ActiveCfg = Debug|x64
+		{9BD39683-D873-471F-840A-4EC8193C9DB5}.RtssRelease|x86.Build.0 = Debug|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.Debug|x64.ActiveCfg = Debug|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.Debug|x64.Build.0 = Debug|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.Debug|x86.ActiveCfg = Debug|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.Release|x64.ActiveCfg = Release|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.Release|x64.Build.0 = Release|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.Release|x86.ActiveCfg = Release|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.RtssDebug|x64.ActiveCfg = Debug|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.RtssDebug|x64.Build.0 = Debug|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.RtssDebug|x86.ActiveCfg = Debug|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.RtssDebug|x86.Build.0 = Debug|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.RtssRelease|x64.ActiveCfg = Release|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.RtssRelease|x64.Build.0 = Release|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.RtssRelease|x86.ActiveCfg = Debug|x64
+		{9490E1C3-410C-4976-8956-21085683C5AE}.RtssRelease|x86.Build.0 = Debug|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

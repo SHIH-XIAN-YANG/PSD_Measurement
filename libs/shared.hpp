@@ -47,12 +47,16 @@ struct Shm_UI {
 
 	int rt_state;
 	double robot_pos[6] = { 0 };
+	char record_filename[256] = { 0 };
+	bool file_create;
+	bool file_close;
 
 	Shm_UI(void) {
 		cmd = 0;
 		log = false;
 		run = true;
-
+		file_create = false;
+		file_close = false;
 		x1 = y1 = sigma1 = 0;
 		x2 = y2 = sigma2 = 0;
 		IRED_EN = true;

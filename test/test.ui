@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>gui_psdClass</class>
- <widget class="QMainWindow" name="gui_psdClass">
+ <class>testClass</class>
+ <widget class="QMainWindow" name="testClass">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1416</width>
-    <height>866</height>
+    <width>1513</width>
+    <height>878</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>gui_psd</string>
+   <string>test</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QCustomPlot" name="xy_plot_1" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>20</x>
+      <y>20</y>
       <width>500</width>
       <height>500</height>
      </rect>
@@ -27,8 +27,8 @@
    <widget class="QCustomPlot" name="xy_plot_2" native="true">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>10</y>
+      <x>540</x>
+      <y>20</y>
       <width>500</width>
       <height>500</height>
      </rect>
@@ -37,75 +37,56 @@
    <widget class="QCustomPlot" name="sigma1_plot" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>549</y>
+      <x>20</x>
+      <y>560</y>
       <width>500</width>
-      <height>231</height>
+      <height>211</height>
      </rect>
     </property>
    </widget>
    <widget class="QCustomPlot" name="sigma2_plot" native="true">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>550</y>
+      <x>540</x>
+      <y>560</y>
       <width>500</width>
-      <height>231</height>
+      <height>211</height>
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="record_pushButton">
+   <widget class="QProgressBar" name="progressBar_1">
     <property name="geometry">
      <rect>
-      <x>1140</x>
-      <y>190</y>
-      <width>171</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Record</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="sigma1_progressBar">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>520</y>
+      <x>20</x>
+      <y>530</y>
       <width>501</width>
       <height>23</height>
      </rect>
     </property>
     <property name="value">
-     <number>0</number>
-    </property>
-    <property name="textVisible">
-     <bool>false</bool>
+     <number>24</number>
     </property>
    </widget>
-   <widget class="QProgressBar" name="sigma2_progressBar">
+   <widget class="QProgressBar" name="progressBar_2">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>520</y>
+      <x>540</x>
+      <y>530</y>
       <width>501</width>
       <height>23</height>
      </rect>
     </property>
     <property name="value">
-     <number>0</number>
-    </property>
-    <property name="textVisible">
-     <bool>false</bool>
+     <number>24</number>
     </property>
    </widget>
    <widget class="QTableWidget" name="data_table">
     <property name="geometry">
      <rect>
       <x>1060</x>
-      <y>20</y>
-      <width>351</width>
-      <height>131</height>
+      <y>30</y>
+      <width>381</width>
+      <height>192</height>
      </rect>
     </property>
     <row>
@@ -138,47 +119,14 @@
       <string>Unit</string>
      </property>
     </column>
-    <item row="0" column="0">
-     <property name="flags">
-      <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-     </property>
-    </item>
-    <item row="0" column="1">
-     <property name="flags">
-      <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-     </property>
-    </item>
     <item row="0" column="2">
      <property name="text">
       <string>mm</string>
      </property>
     </item>
-    <item row="1" column="0">
-     <property name="flags">
-      <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-     </property>
-    </item>
-    <item row="1" column="1">
-     <property name="flags">
-      <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-     </property>
-    </item>
     <item row="1" column="2">
      <property name="text">
       <string>mm</string>
-     </property>
-    </item>
-    <item row="2" column="0">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="flags">
-      <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-     </property>
-    </item>
-    <item row="2" column="1">
-     <property name="flags">
-      <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
      </property>
     </item>
     <item row="2" column="2">
@@ -187,14 +135,17 @@
      </property>
     </item>
    </widget>
-   <widget class="QTextBrowser" name="log_textBrowser">
+   <widget class="QPushButton" name="record_pushButton">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>280</y>
-      <width>351</width>
-      <height>531</height>
+      <x>1170</x>
+      <y>250</y>
+      <width>181</width>
+      <height>61</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>Record</string>
     </property>
    </widget>
   </widget>
@@ -203,7 +154,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1416</width>
+     <width>1513</width>
      <height>21</height>
     </rect>
    </property>
@@ -228,7 +179,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="gui_psd.qrc"/>
+  <include location="test.qrc"/>
  </resources>
  <connections/>
 </ui>

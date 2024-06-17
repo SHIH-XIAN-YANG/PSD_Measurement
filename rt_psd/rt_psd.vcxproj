@@ -155,6 +155,9 @@
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RTSSDebug|x64'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RTSSRelease|x64'">false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\RtssDebug\</OutDir>
+  </PropertyGroup>
   <!-- **************************  -->
   <!--                             -->
   <!-- Compile/Link Configurations -->

@@ -30,7 +30,7 @@ int _tmain(int argc, _TCHAR * argv[])
 	
 	
 	// shared memory:
-	//struct Shm_UI* ui;
+	struct Shm_UI* ui;
 	HANDLE ui_handler = RtCreateSharedMemory(0, 0, sizeof(Shm_UI), L"SHM_UI", (void**)&(psd_data.ui));
 	psd_data.ui->rt_state = KSM_INITIALIZING;
 	ksm_intitial();
@@ -47,43 +47,43 @@ int _tmain(int argc, _TCHAR * argv[])
 	liPeriod_feedback.QuadPart = static_cast<LONGLONG>(FEEDBACK_CYCLE * 10000.0);												//timer setting
 	RtSetTimerRelative(hTimer_feedback, &liPeriod_feedback, &liPeriod_feedback);
 	
-	//log data - write to file
-	wchar_t *dir = L"D:\\PSD_Measurement\\";
-	wchar_t wcspath[256];
-	wchar_t* dump_c = wcsrchr(dir, '\\');
-	if (dump_c != NULL)
-		*dump_c = '\0';
+	////log data - write to file
+	//wchar_t *dir = L"D:\\PSD_Measurement\\";
+	//wchar_t wcspath[256];
+	//wchar_t* dump_c = wcsrchr(dir, '\\');
+	//if (dump_c != NULL)
+	//	*dump_c = '\0';
 
-	wcscpy_s(wcspath, dir);
+	//wcscpy_s(wcspath, dir);
 
-	char path[256];
-	wcstombs(path, wcspath, 256);
+	//char path[256];
+	//wcstombs(path, wcspath, 256);
 
-	SYSTEMTIME LocalTime;
-	GetLocalTime(&LocalTime); // generate file name
-	char fileName[MAX_PATH] = {};
-	int n = sprintf_s(fileName, sizeof(fileName), "\\data_log\\%d_%d_%d_%d_%d.csv", LocalTime.wYear,
-		LocalTime.wMonth,
-		LocalTime.wDay,
-		LocalTime.wHour,
-		LocalTime.wMinute );
-	strcat_s(path, fileName);
-	RtPrintf("PSD data logger on: %s\n", path);
-	if (fs != nullptr)
-		fs = nullptr;
-	fopen_s(&fs, path, "w+");
-	if (fs != nullptr) {
-		fprintf_s(fs, "time(ms), Vx1_1(V), Vx2_1(V), Vy1_1(V), Vy2_1(V), x1(mm), y1(mm), sigma1(V), dx1(V), dy1(V), Vx1_2(V), Vx2_2(V), Vy1_2(V), Vy2_2(V) , x2(mm), y2(mm), sigma2(V),dx2(V),dy2(V), x(mm), y(mm),z(mm)\n");
-		psd_data.ui->rt_state = RT_READY2WRITE_DATA;
-	}else {
-		RtPrintf("open file faled...\n");
-		RtCancelTimer(hTimer_feedback, &liPeriod_feedback);
-		RtCloseHandle(hTimer_feedback);
-		StopLink();
-		RtPrintf("Terminate the .rtss process.\n");
-		//RtPrintf("terminated\n");
-		return 0;
-	}
+	//SYSTEMTIME LocalTime;
+	//GetLocalTime(&LocalTime); // generate file name
+	//char fileName[MAX_PATH] = {};
+	//int n = sprintf_s(fileName, sizeof(fileName), "\\data_log\\%d_%d_%d_%d_%d.csv", LocalTime.wYear,
+	//	LocalTime.wMonth,
+	//	LocalTime.wDay,
+	//	LocalTime.wHour,
+	//	LocalTime.wMinute );
+	//strcat_s(path, fileName);
+	//RtPrintf("PSD data logger on: %s\n", path);
+	//if (fs != nullptr)
+	//	fs = nullptr;
+	//fopen_s(&fs, path, "w+");
+	//if (fs != nullptr) {
+	//	fprintf_s(fs, "time(ms), Vx1_1(V), Vx2_1(V), Vy1_1(V), Vy2_1(V), x1(mm), y1(mm), sigma1(V), dx1(V), dy1(V), Vx1_2(V), Vx2_2(V), Vy1_2(V), Vy2_2(V) , x2(mm), y2(mm), sigma2(V),dx2(V),dy2(V), x(mm), y(mm),z(mm)\n");
+	//	psd_data.ui->rt_state = RT_READY2WRITE_DATA;
+	//}else {
+	//	RtPrintf("open file faled...\n");
+	//	RtCancelTimer(hTimer_feedback, &liPeriod_feedback);
+	//	RtCloseHandle(hTimer_feedback);
+	//	StopLink();
+	//	RtPrintf("Terminate the .rtss process.\n");
+	//	//RtPrintf("terminated\n");
+	//	return 0;
+	//}
 
 	// start IRED trigger
 	WriteOutputBit(5, 0, 1);
@@ -92,7 +92,51 @@ int _tmain(int argc, _TCHAR * argv[])
 	psd_data.ui->rt_state = RT_RUNNING;
 	while (psd_data.ui->run) {
 		//busy waiting
-		RtSleep(1000); // sleep 1 second
+		if (psd_data.ui->file_create) {
+			const wchar_t* dir = L"E:\\samuel\\PSD_Measurement\\data_log\\";
+			wchar_t wcspath[256];
+			wcscpy_s(wcspath, dir);  // Ensure wcspath is large enough
+			char path[256] = { 0 };
+			// Convert wide char path to multibyte char path
+			size_t convertedChars = 0;
+			wcstombs_s(&convertedChars, path, wcspath, 256);
+
+			SYSTEMTIME LocalTime;
+			GetLocalTime(&LocalTime); // Generate file name
+
+			char fileName[MAX_PATH] = {};
+			int n = sprintf_s(fileName, sizeof(fileName), "%d_%d_%d_%d_%d.csv",
+				LocalTime.wYear, LocalTime.wMonth, LocalTime.wDay,
+				LocalTime.wHour, LocalTime.wMinute);
+
+
+			strcat_s(path, fileName);
+
+			if (fs != nullptr) {
+				fs = nullptr;
+			}
+
+			errno_t err = fopen_s(&fs, path, "w+");
+			fprintf_s(fs, "time(ms),Vx1_1(V),Vx2_1(V),Vy1_1(V),Vy2_1(V),x1(mm),y1(mm),sigma1(V),dx1(V),dy1(V)," \
+				"Vx1_2(V),Vx2_2(V),Vy1_2(V),Vy2_2(V),x2(mm),y2(mm),sigma2(V),dx2(V),dy2(V),x(mm),y(mm),z(mm)\n");
+			RtPrintf("PSD data logger on: %s", path);
+			strcpy_s(psd_data.ui->record_filename, path);
+			psd_data.ui->log = true;
+			psd_data.ui->file_create = false;
+		}
+		if (psd_data.ui->file_close) {
+			//close file
+			fflush(fs);
+			if (fs != nullptr) {
+				fclose(fs);
+				fs = nullptr;
+			}
+			psd_data.ui->log = false;
+			psd_data.ui->file_close = false;
+			RtPrintf("log off");
+		}
+
+		RtSleep(10); // sleep 1 second
 	}
 	psd_data.ui->rt_state = RT_TERMINATING;
 

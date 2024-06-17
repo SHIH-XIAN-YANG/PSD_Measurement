@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9490E1C3-410C-4976-8956-21085683C5AE}</ProjectGuid>
+    <ProjectGuid>{9BD39683-D873-471F-840A-4EC8193C9DB5}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
@@ -60,18 +60,17 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\GUIDebug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Link>
-      <AdditionalDependencies>RtApi.lib;HRSDK.lib;Qt6PrintSupportd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Qt\6.5.2\msvc2019_64\lib;..\libs;..\libs\HRSDK_3.0.9\lib;C:\Program Files\IntervalZero\RTX64 SDK\3.7\lib\amd64;D:\PSD_Measurement\libs\HRSDK_3.0.11\HRSDK_3.0.11\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>C:\Program Files\IntervalZero\RTX64 SDK\3.7\include;..\libs;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Qt\6.5.2\msvc2019_64\lib;..\libs;..\libs\HRSDK_3.0.9\lib;C:\Program Files\IntervalZero\RTX64 SDK\3.7\lib\amd64;D:\PSD_Measurement\libs\HRSDK_3.0.11\HRSDK_3.0.11\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt6PrintSupportd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -102,17 +101,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <QtRcc Include="test.qrc" />
+    <QtUic Include="test.ui" />
+    <QtMoc Include="test.h" />
     <ClCompile Include="qcustomplot.cpp" />
-    <QtRcc Include="gui_psd.qrc" />
-    <QtUic Include="gui_psd.ui" />
-    <QtMoc Include="gui_psd.h" />
-    <ClCompile Include="gui_psd.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\libs\shared.hpp" />
-    <ClInclude Include="hrss.h" />
     <QtMoc Include="qcustomplot.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hrss.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

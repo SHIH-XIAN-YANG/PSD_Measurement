@@ -23,16 +23,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="gui_psd.qrc">
+    <QtRcc Include="test.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="gui_psd.ui">
+    <QtUic Include="test.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="gui_psd.h">
+    <QtMoc Include="test.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClCompile Include="gui_psd.cpp">
+    <ClCompile Include="test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,16 +45,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hrss.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\libs\shared.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <QtMoc Include="qcustomplot.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hrss.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
